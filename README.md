@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/hspichardo/apaw-ep-steven-pichardo.svg?branch=develop)](https://travis-ci.org/hspichardo/apaw-ep-steven-pichardo)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Aapaw-ep-steven-pichardo&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Aapaw-ep-steven-pichardo)
 [![BCH compliance](https://bettercodehub.com/edge/badge/hspichardo/apaw-ep-steven-pichardo?branch=master)](https://bettercodehub.com/)
-[![Heroku broken](https://apaw-ep-themes.herokuapp.com/system/version-badge)](https://apaw-ep-themes.herokuapp.com/swagger-ui.html)
+[![Heroku broken](https://apaw-ep-steven-pichardo.herokuapp.com/system/version-badge)](https://apaw-ep-steven-pichardo.herokuapp.com/swagger-ui.html)
 
 ### Tecnologías necesarias
 * Java
