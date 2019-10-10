@@ -21,9 +21,6 @@ public class InstrumentType {
         return hasstrings;
     }
 
-    public void setHasstrings(boolean hasstrings) {
-        this.hasstrings = hasstrings;
-    }
 
     @Override
     public String toString() {
