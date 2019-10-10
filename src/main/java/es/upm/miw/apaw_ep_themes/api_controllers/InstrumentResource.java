@@ -27,6 +27,7 @@ public class InstrumentResource {
     @PostMapping
 
     public InstrumentBasicDto create(@RequestBody InstrumentCreationDto instrumentCreationDto){
+        instrumentCreationDto.validate();
         return this.instrumentBusinessController.create(instrumentCreationDto);
     }
 }

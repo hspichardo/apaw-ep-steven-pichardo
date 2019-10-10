@@ -1,5 +1,7 @@
 package es.upm.miw.apaw_ep_themes.dtos;
 
+import es.upm.miw.apaw_ep_themes.documents.Instrument;
+
 public class InstrumentBasicDto {
     private String id;
     private String name;
@@ -8,9 +10,9 @@ public class InstrumentBasicDto {
 
     }
 
-    public InstrumentBasicDto(String id, String name) {
-        this.id = id;
-        this.name = name;
+    public InstrumentBasicDto(Instrument instrument) {
+        this.id = instrument.getId();
+        this.name = instrument.getName();
     }
 
     public String getId() {

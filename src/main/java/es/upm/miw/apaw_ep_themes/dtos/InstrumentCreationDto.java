@@ -1,5 +1,7 @@
 package es.upm.miw.apaw_ep_themes.dtos;
 
+import es.upm.miw.apaw_ep_themes.exceptions.BadRequestException;
+
 public class InstrumentCreationDto {
     private String name;
     private String yearmanufactory;
@@ -46,5 +48,11 @@ public class InstrumentCreationDto {
 
     public void setHasstrings(boolean hasstrings) {
         this.hasstrings = hasstrings;
+    }
+
+    public void validate(){
+        if(this.name == null || this.name.isEmpty() || this.type == null || this.type.isEmpty() || this.yearmanufactory == null || this.yearmanufactory.isEmpty()){
+            throw new BadRequestException(("Incomplete InstrumentCreationDto"));
+        }
     }
 }

@@ -14,12 +14,13 @@ public class Instrument {
 
     private InstrumentType instrumenttype;
 
-    public Instrument(String id, String name, String yearmanufactory, InstrumentType instrumenttype) {
-        this.id = id;
+    public Instrument(String name, String yearmanufactory, InstrumentType instrumenttype) {
+
         this.name = name;
         this.yearmanufactory = yearmanufactory;
         this.instrumenttype = instrumenttype;
     }
+
 
     public String getId() {
         return id;
