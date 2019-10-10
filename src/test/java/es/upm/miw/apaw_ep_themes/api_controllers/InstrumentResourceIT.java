@@ -5,6 +5,7 @@ import es.upm.miw.apaw_ep_themes.dtos.InstrumentBasicDto;
 import es.upm.miw.apaw_ep_themes.dtos.InstrumentCreationDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,5 +26,16 @@ public class InstrumentResourceIT {
                 .expectBody(InstrumentBasicDto.class)
                 .returnResult().getResponseBody();
         assertEquals("Gibson Les Paul Guitar",instrumentBasicDto.getName());
+    }
+
+    @Test
+
+    void testException(){
+        InstrumentCreationDto instrumentCreationDto = new InstrumentCreationDto(null,null,null,true);
+        this.webTestClient
+                .post().uri(InstrumentResource.INSTRUMENTS)
+                .body(BodyInserters.fromObject(instrumentCreationDto))
+                .exchange()
+                .expectStatus().isEqualTo(HttpStatus.BAD_REQUEST);
     }
 }
