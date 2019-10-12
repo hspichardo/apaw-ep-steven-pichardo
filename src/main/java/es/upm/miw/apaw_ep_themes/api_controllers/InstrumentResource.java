@@ -41,4 +41,10 @@ public class InstrumentResource {
         instrumentCreationDto.validate();
         this.instrumentBusinessController.update(id,instrumentCreationDto);
     }
+
+    @DeleteMapping(value = ID_ID)
+
+    public void update(@PathVariable String id){
+        this.instrumentBusinessController.delete(id);
+    }
 }
