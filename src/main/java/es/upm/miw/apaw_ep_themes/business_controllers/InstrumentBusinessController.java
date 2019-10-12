@@ -45,4 +45,9 @@ public void update(String id, InstrumentCreationDto instrumentCreationDto){
 public Instrument findInstrumentByIdAssured(String id){
         return this.instrumentDao.findById(id).orElseThrow(() -> new NotFoundException("Instrument id: " + id));
 }
+
+public void delete(String id){
+        Instrument instrument = findInstrumentByIdAssured(id);
+        this.instrumentDao.delete(instrument);
+}
 }
