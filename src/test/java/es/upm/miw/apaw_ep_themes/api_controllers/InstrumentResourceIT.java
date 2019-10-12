@@ -77,8 +77,16 @@ public class InstrumentResourceIT {
 
     @Test
     void testUpdate(){
-        String id = this.instrumentDao.findById(this.instrument.getId()).get().getId();
+
         InstrumentCreationDto instrumentCreationDto = new InstrumentCreationDto("Fender Tellecaster","1980","Electrical Guitar", true);
+        InstrumentCreationDto instrumentCreationDto2 = new InstrumentCreationDto("Gibson Les Paul Guitar","1969","Electric Guitar",true);
+        String id = this.webTestClient
+                .post().uri(InstrumentResource.INSTRUMENTS)
+                .body(BodyInserters.fromObject(instrumentCreationDto2))
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(InstrumentBasicDto.class)
+                .returnResult().getResponseBody().getId();
         this.webTestClient
                 .put().uri(InstrumentResource.INSTRUMENTS + InstrumentResource.ID_ID,id)
                 .body(BodyInserters.fromObject(instrumentCreationDto))
