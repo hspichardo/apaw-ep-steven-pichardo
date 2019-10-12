@@ -1,8 +1,13 @@
 package es.upm.miw.apaw_ep_themes.api_controllers;
 
 import es.upm.miw.apaw_ep_themes.ApiTestConfig;
+import es.upm.miw.apaw_ep_themes.daos.InstrumentDao;
+import es.upm.miw.apaw_ep_themes.documents.Instrument;
+import es.upm.miw.apaw_ep_themes.documents.InstrumentType;
 import es.upm.miw.apaw_ep_themes.dtos.InstrumentBasicDto;
 import es.upm.miw.apaw_ep_themes.dtos.InstrumentCreationDto;
+import es.upm.miw.apaw_ep_themes.exceptions.NotFoundException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +18,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class InstrumentResourceIT {
     @Autowired
     private WebTestClient webTestClient;
+
+    @Autowired
+    private InstrumentDao instrumentDao;
+
+    private Instrument instrument;
+
+
+    @BeforeEach
+
+    void before(){
+        InstrumentType instrumentType = new InstrumentType("Electric Guitar",true);
+        Instrument instrument = new Instrument("Gibson Les Paul GOLD","1970",instrumentType);
+        this.instrument =instrument;
+        this.instrumentDao.save(instrument);
+    }
 
     @Test
 
@@ -29,6 +49,9 @@ public class InstrumentResourceIT {
         assertEquals("1969",instrumentCreationDto.getYearmanufactory());
         assertEquals("Electric Guitar",instrumentCreationDto.getType());
     }
+
+
+
 
     @Test
 

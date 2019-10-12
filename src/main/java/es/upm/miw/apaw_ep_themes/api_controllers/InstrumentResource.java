@@ -4,11 +4,10 @@ package es.upm.miw.apaw_ep_themes.api_controllers;
 import es.upm.miw.apaw_ep_themes.business_controllers.InstrumentBusinessController;
 import es.upm.miw.apaw_ep_themes.dtos.InstrumentBasicDto;
 import es.upm.miw.apaw_ep_themes.dtos.InstrumentCreationDto;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(InstrumentResource.INSTRUMENTS)
@@ -29,5 +28,10 @@ public class InstrumentResource {
     public InstrumentBasicDto create(@RequestBody InstrumentCreationDto instrumentCreationDto){
         instrumentCreationDto.validate();
         return this.instrumentBusinessController.create(instrumentCreationDto);
+    }
+
+    @GetMapping(value = ID_ID)
+    public InstrumentCreationDto readById(@PathVariable String id){
+        return this.instrumentBusinessController.readbyId(id);
     }
 }

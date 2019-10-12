@@ -1,5 +1,6 @@
 package es.upm.miw.apaw_ep_themes.dtos;
 
+import es.upm.miw.apaw_ep_themes.documents.Instrument;
 import es.upm.miw.apaw_ep_themes.exceptions.BadRequestException;
 
 public class InstrumentCreationDto {
@@ -16,6 +17,13 @@ public class InstrumentCreationDto {
         this.yearmanufactory = yearmanufactory;
         this.type = type;
         this.hasstrings = hasstrings;
+    }
+
+    public InstrumentCreationDto(Instrument instrument){
+        this.name = instrument.getName();
+        this.yearmanufactory = instrument.getYearmanufactory();
+        this.type = instrument.getInstrumenttype().getType();
+        this.hasstrings = instrument.getInstrumenttype().isHasstrings();
     }
 
     public String getName() {
