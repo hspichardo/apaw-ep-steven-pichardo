@@ -34,4 +34,11 @@ public class InstrumentResource {
     public InstrumentCreationDto readById(@PathVariable String id){
         return this.instrumentBusinessController.readbyId(id);
     }
+
+    @PutMapping(value = ID_ID)
+
+    public void update(@PathVariable String id,@RequestBody InstrumentCreationDto instrumentCreationDto){
+        instrumentCreationDto.validate();
+        this.instrumentBusinessController.update(id,instrumentCreationDto);
+    }
 }

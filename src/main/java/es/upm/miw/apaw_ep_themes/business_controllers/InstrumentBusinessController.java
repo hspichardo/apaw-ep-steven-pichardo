@@ -30,7 +30,19 @@ public class InstrumentBusinessController {
 }
 
 public InstrumentCreationDto readbyId(String id){
-        Instrument instrument = this.instrumentDao.findById(id).orElseThrow(() -> new NotFoundException("Instrument id: " + id));
+        Instrument instrument = findInstrumentByIdAssured(id);
         return new InstrumentCreationDto(instrument);
+}
+
+public void update(String id, InstrumentCreationDto instrumentCreationDto){
+    Instrument instrument = findInstrumentByIdAssured(id);
+    instrument.setName(instrumentCreationDto.getName());
+    instrument.setYearmanufactory(instrumentCreationDto.getYearmanufactory());
+    instrument.setInstrumenttype(new InstrumentType(instrumentCreationDto.getType(),instrumentCreationDto.isHasstrings()));
+    this.instrumentDao.save(instrument);
+}
+
+public Instrument findInstrumentByIdAssured(String id){
+        return this.instrumentDao.findById(id).orElseThrow(() -> new NotFoundException("Instrument id: " + id));
 }
 }
