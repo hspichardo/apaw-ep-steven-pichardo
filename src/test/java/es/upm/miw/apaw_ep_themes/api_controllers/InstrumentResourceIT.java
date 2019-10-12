@@ -51,7 +51,18 @@ public class InstrumentResourceIT {
     }
 
 
+    @Test
+    void testRead(){
+        String id = this.instrumentDao.findById(this.instrument.getId()).get().getId();
+        InstrumentBasicDto instrumentCreationDto = this.webTestClient
+                .get().uri(InstrumentResource.INSTRUMENTS + InstrumentResource.ID_ID,id)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(InstrumentBasicDto.class)
+                .returnResult().getResponseBody();
+        assertEquals("Gibson Les Paul GOLD", instrumentCreationDto.getName());
 
+    }
 
     @Test
 
