@@ -74,4 +74,15 @@ public class InstrumentResourceIT {
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.BAD_REQUEST);
     }
+
+    @Test
+    void testUpdate(){
+        String id = this.instrumentDao.findById(this.instrument.getId()).get().getId();
+        InstrumentCreationDto instrumentCreationDto = new InstrumentCreationDto("Fender Tellecaster","1980","Electrical Guitar", true);
+        this.webTestClient
+                .put().uri(InstrumentResource.INSTRUMENTS + InstrumentResource.ID_ID,id)
+                .body(BodyInserters.fromObject(instrumentCreationDto))
+                .exchange()
+                .expectStatus().isOk();
+    }
 }

@@ -37,7 +37,7 @@ public class InstrumentResource {
 
     @PutMapping(value = ID_ID)
 
-    public void update(@PathVariable String id,InstrumentCreationDto instrumentCreationDto){
+    public void update(@PathVariable String id,@RequestBody InstrumentCreationDto instrumentCreationDto){
         instrumentCreationDto.validate();
         this.instrumentBusinessController.update(id,instrumentCreationDto);
     }
