@@ -26,6 +26,8 @@ public class InstrumentResourceIT {
                 .expectBody(InstrumentBasicDto.class)
                 .returnResult().getResponseBody();
         assertEquals("Gibson Les Paul Guitar",instrumentBasicDto.getName());
+        assertEquals("1969",instrumentCreationDto.getYearmanufactory());
+        assertEquals("Electric Guitar",instrumentCreationDto.getType());
     }
 
     @Test
