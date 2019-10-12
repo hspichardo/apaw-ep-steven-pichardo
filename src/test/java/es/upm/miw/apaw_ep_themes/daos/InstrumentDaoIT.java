@@ -19,8 +19,16 @@ public class InstrumentDaoIT {
 
     void testCreate(){
         Instrument instrument = new Instrument("Gibson Les Paul Guitar","1969",new InstrumentType("Electric Guitar", true));
+        InstrumentType instrumentType = new InstrumentType("Electric Guitar",true);
+        instrumentType.setType("Electrical Guitar");
+        instrument.setYearmanufactory("1970");
+        instrument.setName("Gibson Les Paul GOLD");
+        instrument.setInstrumenttype(instrumentType);
         this.instrumentDao.save(instrument);
         Instrument databaseInstrument = this.instrumentDao.findById(instrument.getId()).orElseGet(Assertions::fail);
-        assertEquals("Gibson Les Paul Guitar", databaseInstrument.getName());
+        assertEquals("Gibson Les Paul GOLD", databaseInstrument.getName());
+        assertEquals("1970", databaseInstrument.getYearmanufactory());
+        assertEquals("Electrical Guitar", databaseInstrument.getInstrumenttype().getType());
+        assertEquals(true, databaseInstrument.getInstrumenttype().isHasstrings());
     }
 }
