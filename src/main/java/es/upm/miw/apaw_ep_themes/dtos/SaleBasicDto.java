@@ -21,9 +21,9 @@ public class SaleBasicDto {
         List<String> instrumentIds = new ArrayList<>();
         this.id = sale.getId();
         this.clientId = sale.getClient().getId();
-        sale.getInstruments().stream().forEach(i->{
-            instrumentIds.add(i.getId());
-        });
+        sale.getInstruments().stream().forEach(i->
+            instrumentIds.add(i.getId())
+        );
         this.instrumentsIds = instrumentIds;
         this.numelements = sale.getNumelements();
         this.date = sale.getDate();

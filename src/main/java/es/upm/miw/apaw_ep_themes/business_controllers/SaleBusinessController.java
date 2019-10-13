@@ -51,6 +51,7 @@ public class SaleBusinessController {
                 break;
             case "date":
                 sale.setDate(LocalDateTime.parse(salePatchDto.getNewValue(), formatter));
+                break;
             default:
                 throw new BadRequestException("SalePatchDto is invalid");
         }
