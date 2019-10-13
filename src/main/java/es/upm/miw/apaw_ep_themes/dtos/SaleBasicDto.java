@@ -2,6 +2,7 @@ package es.upm.miw.apaw_ep_themes.dtos;
 
 import es.upm.miw.apaw_ep_themes.documents.Sale;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class SaleBasicDto {
     private int numelements;
     private List<String> instrumentsIds;
     private String clientId;
+    private LocalDateTime date;
 
     public SaleBasicDto(){
         // empty for framework
@@ -24,6 +26,7 @@ public class SaleBasicDto {
         });
         this.instrumentsIds = instrumentIds;
         this.numelements = sale.getNumelements();
+        this.date = sale.getDate();
     }
 
     public String getId() {
@@ -42,6 +45,10 @@ public class SaleBasicDto {
         return clientId;
     }
 
+    public LocalDateTime getDate() {
+        return date;
+    }
+
     @Override
     public String toString() {
         return "SaleBasicDto{" +
@@ -49,6 +56,7 @@ public class SaleBasicDto {
                 ", numelements=" + numelements +
                 ", instrumentsIds=" + instrumentsIds +
                 ", clientId='" + clientId + '\'' +
+                ", date=" + date +
                 '}';
     }
 }

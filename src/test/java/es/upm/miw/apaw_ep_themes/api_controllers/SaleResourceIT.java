@@ -106,6 +106,7 @@ public class SaleResourceIT {
                 .body(BodyInserters.fromObject(new SalePatchDto("numelements","1")))
                 .exchange()
                 .expectStatus().isOk();
+
     }
 
 }
