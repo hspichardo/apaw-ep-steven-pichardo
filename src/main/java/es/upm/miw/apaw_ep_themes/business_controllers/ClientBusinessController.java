@@ -5,7 +5,6 @@ import es.upm.miw.apaw_ep_themes.daos.ClientDao;
 import es.upm.miw.apaw_ep_themes.documents.Client;
 import es.upm.miw.apaw_ep_themes.dtos.ClientBasicDto;
 import es.upm.miw.apaw_ep_themes.dtos.ClientCreationDto;
-import es.upm.miw.apaw_ep_themes.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
