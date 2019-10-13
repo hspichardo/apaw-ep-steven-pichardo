@@ -13,9 +13,10 @@ public class SaleDto {
         //empty for framework
     }
 
-    public SaleDto(int numelements, List<String>instrumentsIds){
+    public SaleDto(int numelements, List<String>instrumentsIds, String clientId){
         this.numelements = numelements;
         this.instrumentsIds = instrumentsIds;
+        this.clientId = clientId;
     }
 
     public int getNumelements() {

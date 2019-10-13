@@ -12,10 +12,10 @@ public class Client {
     private String lastname;
     private String email;
 
-    public Client(String name, String dni, String apellido, String email) {
+    public Client(String name, String dni, String lastname, String email) {
         this.name = name;
         this.dni = dni;
-        this.lastname = apellido;
+        this.lastname = lastname;
         this.email = email;
     }
 

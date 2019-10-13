@@ -49,4 +49,15 @@ public class Sale {
     public void setNumelements(int numelements) {
         this.numelements = numelements;
     }
+
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "id='" + id + '\'' +
+                ", date=" + date +
+                ", numelements=" + numelements +
+                ", client=" + client +
+                ", instrumentsIds=" + instrumentsIds +
+                '}';
+    }
 }
