@@ -17,7 +17,7 @@ public class Sale {
     @DBRef
     private Client client;
     @DBRef
-    List<String> instrumentsIds;
+    List<Instrument> instrumentsIds;
 
     public Sale( int numelements, Client client) {
         this.date = LocalDateTime.now();
@@ -42,7 +42,7 @@ public class Sale {
         return client;
     }
 
-    public List<String> getInstruments() {
+    public List<Instrument> getInstruments() {
         return instrumentsIds;
     }
 
