@@ -14,6 +14,9 @@ import es.upm.miw.apaw_ep_themes.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 @Controller
 public class SaleBusinessController {
@@ -41,10 +44,13 @@ public class SaleBusinessController {
 
     public void patch(String id, SalePatchDto salePatchDto){
         Sale sale = this.saleDao.findById(id).orElseThrow(()-> new NotFoundException("Sale not found"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         switch (salePatchDto.getPath()){
             case "numelements":
                 sale.setNumelements(Integer.parseInt(salePatchDto.getNewValue()));
                 break;
+            case "date":
+                sale.setDate(LocalDateTime.parse(salePatchDto.getNewValue(), formatter));
             default:
                 throw new BadRequestException("SalePatchDto is invalid");
         }
