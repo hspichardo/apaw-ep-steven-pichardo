@@ -11,8 +11,6 @@ import es.upm.miw.apaw_ep_themes.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class SaleBusinessController {
@@ -30,7 +28,7 @@ public class SaleBusinessController {
     public SaleDto create (SaleDto saleDto){
         Client client = this.clientDao.findById(saleDto.getClientId()).orElseThrow(() -> new NotFoundException("Client not found "));
         Sale sale = new Sale(saleDto.getNumelements(),client);
-        saleDto.getInstrumentsIds().stream().forEach((i)->{
+        saleDto.getInstrumentsIds().stream().forEach(i->{
             Instrument ins = this.instrumentDao.findById(i).orElseThrow(()->new NotFoundException("Instrument not found"));
             sale.getInstruments().add(ins);
         });
