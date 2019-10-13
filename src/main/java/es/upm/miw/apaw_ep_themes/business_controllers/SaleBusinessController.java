@@ -6,7 +6,10 @@ import es.upm.miw.apaw_ep_themes.daos.SaleDao;
 import es.upm.miw.apaw_ep_themes.documents.Client;
 import es.upm.miw.apaw_ep_themes.documents.Instrument;
 import es.upm.miw.apaw_ep_themes.documents.Sale;
+import es.upm.miw.apaw_ep_themes.dtos.SaleBasicDto;
 import es.upm.miw.apaw_ep_themes.dtos.SaleDto;
+import es.upm.miw.apaw_ep_themes.dtos.SalePatchDto;
+import es.upm.miw.apaw_ep_themes.exceptions.BadRequestException;
 import es.upm.miw.apaw_ep_themes.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +28,7 @@ public class SaleBusinessController {
         this.instrumentDao = instrumentDao;
     }
 
-    public SaleDto create (SaleDto saleDto){
+    public SaleBasicDto create (SaleDto saleDto){
         Client client = this.clientDao.findById(saleDto.getClientId()).orElseThrow(() -> new NotFoundException("Client not found "));
         Sale sale = new Sale(saleDto.getNumelements(),client);
         saleDto.getInstrumentsIds().stream().forEach(i->{
@@ -33,6 +36,17 @@ public class SaleBusinessController {
             sale.getInstruments().add(ins);
         });
         this.saleDao.save(sale);
-        return saleDto;
+        return new SaleBasicDto(sale);
+    }
+
+    public void patch(String id, SalePatchDto salePatchDto){
+        Sale sale = this.saleDao.findById(id).orElseThrow(()-> new NotFoundException("Sale not found"));
+        switch (salePatchDto.getPath()){
+            case "numelements":
+                sale.setNumelements(Integer.parseInt(salePatchDto.getNewValue()));
+                break;
+            default:
+                throw new BadRequestException("SalePatchDto is invalid");
+        }
     }
 }
