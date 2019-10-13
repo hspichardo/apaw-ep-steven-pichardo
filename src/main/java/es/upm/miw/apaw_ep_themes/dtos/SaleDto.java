@@ -1,5 +1,4 @@
 package es.upm.miw.apaw_ep_themes.dtos;
-import es.upm.miw.apaw_ep_themes.documents.Sale;
 import es.upm.miw.apaw_ep_themes.exceptions.BadRequestException;
 
 import java.util.List;
