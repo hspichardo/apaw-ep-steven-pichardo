@@ -40,6 +40,6 @@ public class SaleResource {
         if (!"numelements".equals(q.split(":")[0])) {
             throw new BadRequestException("query param q is incorrect, missing 'numelements:'");
         }
-        return this.saleBusinessController.findbyQuantityofElements(Integer.parseInt(q.split(":>=")[1]));
+        return this.saleBusinessController.findbyQuantityofElements(Integer.parseInt(q.split(":")[1]));
     }
 }
