@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -55,5 +57,12 @@ public class SaleBusinessController {
             default:
                 throw new BadRequestException("SalePatchDto is invalid");
         }
+    }
+
+    public List<SaleBasicDto> findbyQuantityofElements (int value){
+        return this.saleDao.findAll().stream()
+                .filter(sale -> sale.getNumelements() == value)
+                .map(SaleBasicDto::new)
+                .collect(Collectors.toList());
     }
 }
