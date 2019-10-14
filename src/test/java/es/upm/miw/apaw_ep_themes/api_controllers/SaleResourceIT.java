@@ -5,7 +5,6 @@ import es.upm.miw.apaw_ep_themes.business_controllers.SaleBusinessController;
 import es.upm.miw.apaw_ep_themes.daos.ClientDao;
 import es.upm.miw.apaw_ep_themes.daos.InstrumentDao;
 import es.upm.miw.apaw_ep_themes.documents.Client;
-import es.upm.miw.apaw_ep_themes.documents.Sale;
 import es.upm.miw.apaw_ep_themes.dtos.*;
 import es.upm.miw.apaw_ep_themes.exceptions.NotFoundException;
 import org.junit.jupiter.api.Test;
