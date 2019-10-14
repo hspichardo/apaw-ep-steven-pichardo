@@ -13,6 +13,7 @@ import es.upm.miw.apaw_ep_themes.exceptions.BadRequestException;
 import es.upm.miw.apaw_ep_themes.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import reactor.core.publisher.EmitterProcessor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,12 +26,16 @@ public class SaleBusinessController {
     private SaleDao saleDao;
     private ClientDao clientDao;
     private InstrumentDao instrumentDao;
+    private EmitterProcessor<String> emitter;
+
+
 
     @Autowired
     public SaleBusinessController(SaleDao saleDao, ClientDao clientDao, InstrumentDao instrumentDao){
         this.saleDao = saleDao;
         this.clientDao = clientDao;
         this.instrumentDao = instrumentDao;
+        this.emitter = EmitterProcessor.create();
     }
 
     public SaleBasicDto create (SaleDto saleDto){
@@ -41,6 +46,7 @@ public class SaleBusinessController {
             sale.getInstruments().add(ins);
         });
         this.saleDao.save(sale);
+        this.emitter.onNext("New Sale is created");
         return new SaleBasicDto(sale);
     }
 
@@ -64,5 +70,9 @@ public class SaleBusinessController {
                 .filter(sale -> sale.getNumelements() == value)
                 .map(SaleBasicDto::new)
                 .collect(Collectors.toList());
+    }
+
+    public EmitterProcessor<String> publisher() {
+        return this.emitter;
     }
 }

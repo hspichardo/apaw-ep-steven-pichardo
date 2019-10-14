@@ -4,7 +4,7 @@ import es.upm.miw.apaw_ep_themes.exceptions.BadRequestException;
 import java.util.List;
 
 public class SaleDto {
-    private String id;
+
     private int numelements;
     private List<String> instrumentsIds;
     private String clientId;
@@ -39,9 +39,7 @@ public class SaleDto {
         return clientId;
     }
 
-    public String getId(){
-        return id;
-    }
+
 
     public void validate(){
         if(this.numelements == 0 || this.instrumentsIds.isEmpty() ){
