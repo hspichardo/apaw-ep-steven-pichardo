@@ -35,6 +35,7 @@ public class SaleBusinessController {
         this.saleDao = saleDao;
         this.clientDao = clientDao;
         this.instrumentDao = instrumentDao;
+        this.emitter = EmitterProcessor.create();
     }
 
     public SaleBasicDto create (SaleDto saleDto){
