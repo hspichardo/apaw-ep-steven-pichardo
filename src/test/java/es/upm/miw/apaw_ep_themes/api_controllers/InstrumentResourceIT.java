@@ -3,6 +3,7 @@ package es.upm.miw.apaw_ep_themes.api_controllers;
 import es.upm.miw.apaw_ep_themes.ApiTestConfig;
 import es.upm.miw.apaw_ep_themes.daos.InstrumentDao;
 import es.upm.miw.apaw_ep_themes.documents.Instrument;
+import es.upm.miw.apaw_ep_themes.documents.InstrumentBuilder;
 import es.upm.miw.apaw_ep_themes.documents.InstrumentType;
 import es.upm.miw.apaw_ep_themes.dtos.InstrumentBasicDto;
 import es.upm.miw.apaw_ep_themes.dtos.InstrumentCreationDto;
@@ -28,7 +29,7 @@ public class InstrumentResourceIT {
 
     void before(){
         InstrumentType instrumentType = new InstrumentType("Electric Guitar",true);
-        Instrument instrument = new Instrument("Gibson Les Paul GOLD","1970",instrumentType);
+        Instrument instrument = new InstrumentBuilder().setName("Gibson Les Paul GOLD").setYearManufactury("1970").setInstrumentType(instrumentType).build();
         this.instrument =instrument;
         this.instrumentDao.save(instrument);
     }
