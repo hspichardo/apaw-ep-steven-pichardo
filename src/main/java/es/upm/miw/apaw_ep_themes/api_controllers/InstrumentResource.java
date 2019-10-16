@@ -44,7 +44,7 @@ public class InstrumentResource {
 
     @DeleteMapping(value = ID_ID)
 
-    public void update(@PathVariable String id){
+    public void delete(@PathVariable String id){
         this.instrumentBusinessController.delete(id);
     }
 }
