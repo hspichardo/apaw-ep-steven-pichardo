@@ -39,11 +39,11 @@ public class TreeClientLeaf implements  TreeClient{
 
     @Override
     public void add(TreeClient treeClient) {
-
+        // Do nothing because is leaf
     }
 
     @Override
     public void remove(TreeClient treeClient) {
-
+        // Do nothing because is leaf
     }
 }
