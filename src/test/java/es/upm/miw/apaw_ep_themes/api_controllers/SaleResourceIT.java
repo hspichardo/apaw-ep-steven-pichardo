@@ -23,9 +23,7 @@ import java.util.List;
 public class SaleResourceIT {
     @Autowired
     private WebTestClient webTestClient;
-
-    @Autowired
-    private InstrumentDao instrumentDao;
+    
 
     @Autowired
     private SaleBusinessController saleBusinessController;
