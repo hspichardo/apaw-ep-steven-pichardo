@@ -1,5 +1,6 @@
 package es.upm.miw.apaw_ep_themes.documents;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TreeClientComposite implements TreeClient {
@@ -16,6 +17,13 @@ public class TreeClientComposite implements TreeClient {
 
     private List<TreeClient> treeClientList;
 
+    public TreeClientComposite(String name, String dni, String lastname, String email){
+        this.name = name;
+        this.dni = dni;
+        this.lastname =lastname;
+        this.email = email;
+        this.treeClientList = new ArrayList<>();
+    }
 
     @Override
     public String id() {
